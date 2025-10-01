@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Badminton Scoring</title>
+</head>
+<body>
+    <h1>🏸 Badminton Scoring System</h1>
+
+    <h2>Game {{ game.current_game }} of 3</h2>
+    <p>Player A: {{ game.score_a }} | Games Won: {{ game.games_won_a }}</p>
+    <p>Player B: {{ game.score_b }} | Games Won: {{ game.games_won_b }}</p>
+
+    {% if game.match_winner() %}
+        <h2>🎉 Winner: {{ game.match_winner() }}</h2>
+        <a href="/reset">🔄 Start New Match</a>
+    {% else %}
+        <a href="/point/A">+1 Player A</a><br>
+        <a href="/point/B">+1 Player B</a><br>
+        <a href="/reset">🔄 Reset Match</a>
+    {% endif %}
+</body>
+</html>
