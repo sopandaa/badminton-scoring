@@ -1,12 +1,14 @@
 # 🏸 Badminton Scoring Web App
 
-A simple beginner-friendly badminton scoring system built with Python and Flask.
+A simple beginner-friendly badminton scoring system built with Python and streamlit
 
 ## Features
 - Rally scoring (to 21, win by 2, cap at 30)
 - Best of 3 games
 - Web-based interface (buttons for scoring)
 - Reset match option
+- Graph that shows points summary in real time
+- Can add custom player names.
 
 ## Installation
 1. Clone the repository:
@@ -18,8 +20,7 @@ A simple beginner-friendly badminton scoring system built with Python and Flask.
 pip install -r requirements.txt
 
 3. Run the app:
- python app.py
-
-4. Open browser:
- http://127.0.0.1:5000/
+ streamlit run streamlit_app.py
+ 
+4. The app will run on the browser!!
  
