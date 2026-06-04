@@ -7,7 +7,6 @@ A simple beginner-friendly badminton scoring system built with Python and stream
 - Best of 3 games
 - Web-based interface (buttons for scoring)
 - Reset match option
-- Graph that shows points summary in real time
 - Can add custom player names.
 
 ## Installation

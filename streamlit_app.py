@@ -13,10 +13,19 @@ game = st.session_state.game
 st.title("🏸 Badminton Scoring System")
 
 # --- Player Names Input ---
-player_a = st.text_input("Player A Name", "Player A")
-player_b = st.text_input("Player B Name", "Player B")
+if "player_a" not in st.session_state:
+    st.session_state.player_a = "Player A"
 
-# --- Display Current Scores with Colors ---
+if "player_b" not in st.session_state:
+    st.session_state.player_b = "Player B"
+
+player_a = st.text_input("Player A Name", value=st.session_state.player_a)
+player_b = st.text_input("Player B Name", value=st.session_state.player_b)
+
+st.session_state.player_a = player_a
+st.session_state.player_b = player_b
+
+# --- Display of Current Scores with Colors ---
 st.markdown(f"**Current Game:** {game.current_game} of 3")
 st.markdown(f"<span style='color:red;font-size:20px;'>{player_a}: {game.score_a}</span> | "
             f"<span style='color:blue;font-size:20px;'>{player_b}: {game.score_b}</span>", 
@@ -26,26 +35,29 @@ st.markdown(f"<span style='color:red;font-size:20px;'>{player_a}: {game.score_a}
 st.markdown(f"**Games Won:** {player_a}: {game.games_won_a} | {player_b}: {game.games_won_b}")
 
 # --- Bar Chart for Current Score ---
-score_data = pd.DataFrame({
-    "Player": [player_a, player_b],
-    "Score": [game.score_a, game.score_b]
-})
-fig = px.bar(score_data, x="Player", y="Score", color="Player",
-             color_discrete_map={player_a: "red", player_b: "blue"},
-             title="Current Game Score")
-st.plotly_chart(fig, use_container_width=True)
+# score_data = pd.DataFrame({
+#     "Player": [player_a, player_b],
+#     "Score": [game.score_a, game.score_b]
+# })
+# fig = px.bar(score_data, x="Player", y="Score", color="Player",
+#              color_discrete_map={player_a: "red", player_b: "blue"},
+#              title="Current Game Score")
+# st.plotly_chart(fig, use_container_width=True)
 
 # --- Match Logic with Buttons ---
 if not game.match_winner():
     col1, col2 = st.columns(2)
     with col1:
-        if st.button(f"+1 {player_a}"):
-            game.add_point("A")
+         if st.button(f"+1 {player_a}"):
+          game.add_point("A")
+          st.rerun()
     with col2:
-        if st.button(f"+1 {player_b}"):
-            game.add_point("B")
+         if st.button(f"+1 {player_b}"):
+          game.add_point("B")
+          st.rerun()
 else:
     winner_name = player_a if game.games_won_a == 2 else player_b
     st.success(f"🎉 Match Winner: {winner_name}")
     if st.button("🔄 Reset Match"):
-        st.session_state.game = BadmintonGame()
+     st.session_state.game = BadmintonGame()
+     st.rerun()
