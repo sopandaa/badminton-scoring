@@ -12,7 +12,7 @@ A simple beginner-friendly badminton scoring system built with Python and stream
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/badminton-scoring.git
+   git clone https://github.com/sopandaa/badminton-scoring.git
    cd badminton-scoring
 
 2. Install Dependencies:  
@@ -22,4 +22,11 @@ pip install -r requirements.txt
  streamlit run streamlit_app.py
  
 4. The app will run on the browser!!
+
  
+
+## Screenshots
+
+### Home Page
+
+![Home Page](screenshots/home.png)
